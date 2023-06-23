@@ -1,3 +1,4 @@
+// Computer chooses randomly between rock, paper and scissors and returns the string.
 function getComputerChoice() {
   const num = Math.floor((Math.random() * 3) + 1);
 
@@ -17,6 +18,9 @@ function getComputerChoice() {
 
   return computerChoice;
 }
+
+let playerScore = 0;
+let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
   const playerSel = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
@@ -38,7 +42,7 @@ function playRound(playerSelection, computerSelection) {
     } else {
       status = "lose";
     }
-  } else if (playerSel === "Scissors") { // playerSel === "Scissors"
+  } else if (playerSel === "Scissors") {
     if (computerSelection === "Rock") {
       status = "lose";
     } else if (computerSelection === "Paper") {
@@ -63,45 +67,39 @@ function playRound(playerSelection, computerSelection) {
   return status;
 }
 
+/* eventType - 'click, keydown, submit, mouseover...'
+eventListener - function that executes when specified event (ex: click) occurs
 
-// const playerSelection = "ROCK";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
+*/
+//element.addEventListener(eventType, eventListener)
 
 function game() {
-  let playerScore = 0, computerScore = 0;
-  let winner;
-  for (let i = 0; i < 5; i++) {
-    let userChoice = prompt("Make a choice: ", "exit");
-    if (userChoice === "exit")
-      break;
-    else {
-      let status = playRound(userChoice, getComputerChoice());
-      if (status === "win") {
-        playerScore++;
-        winner = "player";
-      } else if (status === "lose") {
-        computerScore++;
-        winner = "computer";
-      } else {
-        winner = "tie";
-      }
+  const result = document.querySelector('#results');
 
-      if (winner !== "tie") {
-        console.log(`The winner of this round is: ${winner}`)
-      } else {
-        console.log("This round was a tie!");
-      }
-      console.log('\n');
-    }
-  }
-  if (playerScore > computerScore) {
-    console.log(`The final winner is: player!`)
-  } else if (computerScore > playerScore) {
-    console.log("The final winner is computer!");
-  } else {
-    console.log("Exiting...");
-  }
+  const rockBtn = document.querySelector('#rock-btn');
+  const paperBtn = document.querySelector('#paper-btn');
+  const scissorsBtn = document.querySelector('#scissors-btn');
+  // selects the element with id rock-btn and assigns it to rockBtn. Now, you can add eventListener to rockBtn, and modify its attributes, change styling, or perform any other actions JS allows on HTML elements.
+
+
+  
+  // doesn't work because JS evaluates function call (getComputerchoice()) immediately
+  // before addEventListener even is set up
+  //rockBtn.addEventListener('click', playRound("Rock", getComputerChoice()));
+
+
+  rockBtn.addEventListener('click', () => {
+    const result = playRound("Rock",getComputerChoice());
+  });
+  paperBtn.addEventListener('click', () => {
+    const result = playRound("Paper",getComputerChoice());
+  });
+  scissorsBtn.addEventListener('click', () => {
+    const result = playRound("Scissors",getComputerChoice());
+  });
+
+  const resultsDiv = document.querySelector('#results');
+
 }
 
 game();
