@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'SFUIText-Regular';
+  src: url(fonts/SFUIText-Regular.otf);
+}
+
+body {
+  background-color: #111720;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  font-family: 'SFUIText-Regular', 'Lato', sans-serif;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  word-spacing: 8px;
+  padding: 10px 0;
+}
