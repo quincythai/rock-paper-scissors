@@ -13,7 +13,6 @@ body {
 
   width: 100%;
   position: fixed;
-  padding: 10px 0;
   display: flex;
   justify-content: center;
 }
@@ -24,4 +23,8 @@ body {
 
 .footer {
   bottom: 0;
+}
+
+.footer p {
+  opacity: 80%;
 }
