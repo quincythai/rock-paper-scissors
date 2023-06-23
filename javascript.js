@@ -72,6 +72,11 @@ function playRound(playerSelection, computerSelection) {
 
   outcomeParagraph.textContent = paragraphText;
   scoreParagraph.textContent = `Player score: ${playerScore}, Computer score: ${computerScore}`;
+
+  if (playerScore === 5)
+    alert('The winner is player!');
+  else if (computerScore === 5)
+    alert('The winner is the computer!');
 }
 
 /* eventType - 'click, keydown, submit, mouseover...'
@@ -100,13 +105,6 @@ function game() {
   scissorsBtn.addEventListener('click', () => {
    playRound("Scissors", getComputerChoice());
   });
-
-  if (playerScore === 5) {
-    alert('The winner is player!');
-  }
-  elif (computerScore === 5) {
-    alert('The winner is the computer!');
-  }
 }
 
 game();
