@@ -58,31 +58,20 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-  const resultDiv = document.querySelector('#results'); // select the div with id results
-  const resultElement = document.createElement('p');
+  const outcomeParagraph = document.querySelector('#outcome-paragraph');
+  const scoreParagraph = document.querySelector('#score-paragraph');
+  let paragraphText;
 
   if (status === "tie") {
-    const resultText = `You tied. ${playerSel} ties ${computerSelection}.`; // string to be outputted
-    resultElement.textContent = resultText; // paragraph contains the string for text
-    resultDiv.appendChild(resultElement); // the paragraph becomes a child in the results div.
+    paragraphText = `You tied. ${playerSel} ties ${computerSelection}.`; // string to be outputted
   } else if (status === "lose") {
-    const resultText = `You ${status}! ${playerSel} loses to ${computerSelection}.`;
-    resultElement.textContent = resultText; 
-    resultDiv.appendChild(resultElement); 
+    paragraphText = `You ${status}! ${playerSel} loses to ${computerSelection}.`;
   } else if (status === "win") {
-    const resultText = `You ${status}! ${playerSel} beats ${computerSelection}.`; 
-    resultElement.textContent = resultText; 
-    resultDiv.appendChild(resultElement); 
-  } else {
-    const resultText = "You have entered an invalid reponse. No score has been altered. ";
-    resultElement.textContent = resultText;
-    resultDiv.appendChild(resultElement);
+    paragraphText = `You ${status}! ${playerSel} beats ${computerSelection}.`; 
   }
 
-  const scoreText = `\nPlayer score: ${playerScore}, Computer score: ${computerScore}`;
-  const scoreTextNode = document.createTextNode(scoreText);
-  resultElement.appendChild(scoreTextNode);
-
+  outcomeParagraph.textContent = paragraphText;
+  scoreParagraph.textContent = `Player score: ${playerScore}, Computer score: ${computerScore}`;
 }
 
 /* eventType - 'click, keydown, submit, mouseover...'
@@ -112,7 +101,11 @@ function game() {
    playRound("Scissors", getComputerChoice());
   });
 
-  if (playerScore >= 5) {
+  if (playerScore === 5) {
+    alert('The winner is player!');
+  }
+  elif (computerScore === 5) {
+    alert('The winner is the computer!');
   }
 }
 
